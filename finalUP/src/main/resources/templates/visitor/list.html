@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Список посетителей</title>
+</head>
+<body>
+<h1>Список посетителей</h1>
+<a href="/visitors/create">Создать нового посетителя</a>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Имя</th>
+        <th>Фамилия</th>
+        <th>Email</th>
+        <th>Телефон</th>
+        <th>Действия</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="visitor : ${visitors}">
+        <td th:text="${visitor.visitorId}"></td>
+        <td th:text="${visitor.firstName}"></td>
+        <td th:text="${visitor.lastName}"></td>
+        <td th:text="${visitor.email}"></td>
+        <td th:text="${visitor.phoneNumber}"></td>
+        <td>
+            <a th:href="@{/visitors/edit/{id}(id=${visitor.visitorId})}">Редактировать</a>
+            <a th:href="@{/visitors/delete/{id}(id=${visitor.visitorId})}">Удалить</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Изменить заказ</title>
+</head>
+<body>
+
+<h1>Изменить заказ</h1>
+
+<form action="#" th:action="@{/orders/edit/{id}(id=${order.orderId})}" th:object="${order}" method="post">
+  <label for="visitor">Посетитель:</label>
+  <select id="visitor" th:field="*{visitor.visitorId}" required>
+    <option th:each="visitor : ${visitors}"
+            th:value="${visitor.visitorId}"
+            th:text="${visitor.firstName} + ' ' + ${visitor.lastName}">Посетитель</option>
+  </select>
+
+  <label for="establishment">Заведение:</label>
+  <select id="establishment" th:field="*{establishment.establishmentId}" required>
+    <option th:each="establishment : ${establishments}"
+            th:value="${establishment.establishmentId}"
+            th:text="${establishment.name}">Заведение</option>
+  </select>
+
+  <label for="orderDate">Дата заказа:</label>
+  <input type="date" id="orderDate" th:field="*{orderDate}" required/>
+  <label for="totalAmount">Общая сумма заказа:</label>
+  <input type="number" id="totalAmount" th:field="*{totalAmount}" required/>
+
+  <button type="submit">Сохранить изменения</button>
+</form>
+
+<a href="/orders">Назад к списку заказов</a>
+
+</body>
+</html>

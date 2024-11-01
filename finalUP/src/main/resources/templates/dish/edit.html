@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Изменить блюдо</title>
+</head>
+<body>
+
+<h1>Изменить блюдо</h1>
+
+<form action="#" th:action="@{/dishes/edit/{id}(id=${dish.dishId})}" th:object="${dish}" method="post">
+  <label for="menu">Меню:</label>
+  <select id="menu" th:field="*{menu.menuId}" required>
+    <option th:each="menu : ${menus}"
+            th:value="${menu.menuId}"
+            th:text="${menu.menuDate}">Меню</option>
+  </select>
+
+  <label for="name">Название блюда:</label>
+  <input type="text" id="name" th:field="*{name}" required/>
+
+  <label for="description">Описание:</label>
+  <textarea id="description" th:field="*{description}" required></textarea>
+
+  <label for="price">Цена:</label>
+  <input type="number" id="price" th:field="*{price}" min="1" required step="0.01"/>
+
+  <button type="submit">Сохранить изменения</button>
+</form>
+
+<a href="/dishes">Назад к списку блюд</a>
+
+</body>
+</html>

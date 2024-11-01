@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Создать сотрудника</title>
+</head>
+<body>
+
+<h1>Создать нового сотрудника</h1>
+
+<form action="#" th:action="@{/staff/create}" th:object="${staffMember}" method="post">
+    <label for="establishment">Заведение:</label>
+    <select id="establishment" th:field="*{establishment}" required>
+        <option th:each="establishment : ${establishments}"
+                th:value="${establishment.establishmentId}"
+                th:text="${establishment.name}">Заведение</option>
+    </select>
+
+    <label for="firstName">Имя сотрудника:</label>
+    <input type="text" id="firstName" th:field="*{firstName}" required/>
+
+    <label for="lastName">Фамилия сотрудника:</label>
+    <input type="text" id="lastName" th:field="*{lastName}" required/>
+
+    <label for="position">Должность:</label>
+    <input type="text" id="position" th:field="*{position}" required/>
+
+    <button type="submit">Создать</button>
+</form>
+
+<a href="/staff">Назад к списку сотрудников</a>
+
+</body>
+</html>

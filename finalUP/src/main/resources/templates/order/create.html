@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Создать заказ</title>
+</head>
+<body>
+
+<h1>Создать новый заказ</h1>
+
+<form action="#" th:action="@{/orders/create}" th:object="${order}" method="post">
+    <label for="visitor">Посетитель:</label>
+    <select id="visitor" th:field="*{visitor}" required>
+        <option th:each="visitor : ${visitors}"
+                th:value="${visitor.visitorId}"
+                th:text="${visitor.firstName} + ' ' + ${visitor.lastName}">Посетитель</option>
+    </select>
+
+    <label for="establishment">Заведение:</label>
+    <select id="establishment" th:field="*{establishment}" required>
+        <option th:each="establishment : ${establishments}"
+                th:value="${establishment.establishmentId}"
+                th:text="${establishment.name}">Заведение</option>
+    </select>
+
+    <label for="orderDate">Дата заказа:</label>
+    <input type="date" id="orderDate" th:field="*{orderDate}" required/>
+
+    <label for="totalAmount">Общая сумма:</label>
+    <input type="number" id="totalAmount" th:field="*{totalAmount}" required step="0.01"/>
+
+    <button type="submit">Создать</button>
+</form>
+
+<a href="/orders">Назад к списку заказов</a>
+
+</body>
+</html>

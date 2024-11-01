@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Список блюд</title>
+</head>
+<body>
+<h1>Список блюд</h1>
+<a href="/dishes/create">Создать новое блюдо</a>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>ID Меню</th>
+        <th>Название блюда</th>
+        <th>Описание</th>
+        <th>Цена</th>
+        <th>Действия</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="dish : ${dishes}">
+        <td th:text="${dish.dishId}"></td>
+        <td th:text="${dish.menu.getMenuId()}"></td>
+        <td th:text="${dish.name}"></td>
+        <td th:text="${dish.description}"></td>
+        <td th:text="${dish.price}"></td>
+        <td>
+            <a th:href="@{/dishes/edit/{id}(id=${dish.dishId})}">Редактировать</a>
+            <a th:href="@{/dishes/delete/{id}(id=${dish.dishId})}">Удалить</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

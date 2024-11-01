@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Создать посетителя</title>
+</head>
+<body>
+
+<h1>Создать нового посетителя</h1>
+
+<form action="#" th:action="@{/visitors/create}" th:object="${visitor}" method="post">
+    <label for="firstName">Имя:</label>
+    <input type="text" id="firstName" th:field="*{firstName}" required/>
+
+    <label for="lastName">Фамилия:</label>
+    <input type="text" id="lastName" th:field="*{lastName}" required/>
+
+    <label for="email">Электронная почта:</label>
+    <input type="email" id="email" th:field="*{email}" required/>
+
+    <label for="phoneNumber">Номер телефона:</label>
+    <input type="tel" id="phoneNumber" th:field="*{phoneNumber}" required/>
+
+    <button type="submit">Создать</button>
+</form>
+
+<a href="/visitors">Назад к списку посетителей</a>
+
+</body>
+</html>

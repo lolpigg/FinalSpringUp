@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Создать заведение</title>
+</head>
+<body>
+
+<h1>Создать новое заведение</h1>
+
+<form action="#" th:action="@{/establishments/create}" th:object="${establishment}" method="post">
+    <label for="name">Название:</label>
+    <input type="text" id="name" th:field="*{name}" required/>
+
+    <label for="location">Адрес:</label>
+    <input type="text" id="location" th:field="*{location}" required/>
+
+    <label for="type">Тип:</label>
+    <input type="text" id="type" th:field="*{type}" required/>
+
+    <button type="submit">Создать</button>
+</form>
+
+<a href="/establishments">Назад к списку заведений</a>
+
+</body>
+</html>

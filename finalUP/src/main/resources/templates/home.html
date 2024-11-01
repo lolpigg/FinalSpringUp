@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Главная страница</title>
+</head>
+<body>
+
+<h1>Добро пожаловать в систему управления заведениями!</h1>
+
+<nav>
+    <ul>
+        <li><a href="/establishments">Заведения</a></li>
+        <li><a href="/menus">Меню</a></li>
+        <li><a href="/dishes">Блюда</a></li>
+        <li><a href="/visitors">Посетители</a></li>
+        <li><a href="/orders">Заказы</a></li>
+        <li><a href="/reviews">Отзывы</a></li>
+        <li><a href="/staff">Сотрудники</a></li>
+        <li><a href="/reservations">Резервации</a></li>
+    </ul>
+</nav>
+
+<p>Выберите раздел, чтобы управлять данными.</p><br>
+<p>Зарегистрироваться:</p>
+<form action="/register" method="post">
+    <label for="username">Логин:</label>
+    <input id="username" type="text" name="username" required /><br/>
+    <label for="password">Пароль:</label>
+    <input id="password" type="password" name="password" required /><br/>
+    <input type="submit" value="Зарегистрироваться"/>
+</form>
+
+</body>
+</html>

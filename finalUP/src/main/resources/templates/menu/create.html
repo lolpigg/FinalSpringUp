@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Создать меню</title>
+</head>
+<body>
+
+<h1>Создать новое меню</h1>
+
+<form action="#" th:action="@{/menus/create}" th:object="${menu}" method="post">
+    <label for="establishment">Заведение:</label>
+    <select id="establishment" th:field="*{establishment}" required>
+        <option th:each="establishment : ${establishments}"
+                th:value="${establishment.establishmentId}"
+        th:text="${establishment.name}">Заведение</option>
+    </select>
+
+    <label for="menuDate">Дата обновления меню:</label>
+    <input type="date" id="menuDate" th:field="*{menuDate}" required/>
+
+    <button type="submit">Создать</button>
+</form>
+
+<a href="/menus">Назад к списку меню</a>
+
+</body>
+</html>

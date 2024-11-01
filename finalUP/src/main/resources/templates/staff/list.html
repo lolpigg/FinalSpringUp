@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <title>Список сотрудников</title>
+
+</head>
+
+<body>
+
+<h1>Список сотрудников</h1>
+
+<a href="/staff/create">Добавить нового сотрудника</a>
+
+<table>
+
+    <thead>
+
+    <tr>
+
+        <th>ID сотрудника</th>
+
+        <th>ID заведения</th>
+
+        <th>Имя сотрудника</th>
+
+        <th>Фамилия сотрудника</th>
+
+        <th>Должность сотрудника</th>
+
+        <th>Действия</th>
+
+    </tr>
+
+    </thead>
+
+    <tbody>
+
+    <tr th:each="staff : ${staffMembers}">
+
+        <td th:text="${staff.staffId}"></td>
+
+        <td th:text="${staff.establishment.getEstablishmentId()}"></td>
+
+        <td th:text="${staff.firstName}"></td>
+
+        <td th:text="${staff.lastName}"></td>
+
+        <td th:text="${staff.position}"></td>
+
+        <td>
+
+            <a th:href="@{/staff/edit/{id}(id=${staff.staffId})}">Редактировать</a>
+
+            <a th:href="@{/staff/delete/{id}(id=${staff.staffId})}">Удалить</a>
+
+        </td>
+
+    </tr>
+
+    </tbody>
+
+</table>
+
+</body>
+
+</html>

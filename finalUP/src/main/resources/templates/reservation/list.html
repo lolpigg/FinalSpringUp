@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Список резерваций</title>
+</head>
+<body>
+
+<h1>Список резерваций</h1>
+
+<a href="/reservations/create">Создать новую резервацию</a>
+
+<table>
+    <thead>
+    <tr>
+        <th>ID резервации</th>
+        <th>ID посетителя</th>
+        <th>ID заведения</th>
+        <th>Дата резервации</th>
+        <th>Количество человек</th>
+        <th>Действия</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="reservation : ${reservations}">
+        <td th:text="${reservation.reservationId}"></td>
+        <td th:text="${reservation.visitor.getVisitorId()}"></td>
+        <td th:text="${reservation.establishment.getEstablishmentId()}"></td>
+        <td th:text="${reservation.getReservationDate()}"></td>
+        <td th:text="${reservation.numberOfPeople}"></td>
+        <td>
+            <a th:href="@{/reservations/edit/{id}(id=${reservation.reservationId})}">Редактировать</a>
+            <a th:href="@{/reservations/delete/{id}(id=${reservation.reservationId})}">Удалить</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Список заведений</title>
+</head>
+<body>
+<h1>Список заведений</h1>
+<a href="/establishments/create">Создать новое заведение</a>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Название</th>
+        <th>Адрес</th>
+        <th>Тип</th>
+        <th>Действия</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="establishment : ${establishments}">
+        <td th:text="${establishment.establishmentId}"></td>
+        <td th:text="${establishment.name}"></td>
+        <td th:text="${establishment.location}"></td>
+        <td th:text="${establishment.type}"></td>
+        <td>
+            <a th:href="@{/establishments/edit/{id}(id=${establishment.establishmentId})}">Редактировать</a>
+            <a th:href="@{/establishments/delete/{id}(id=${establishment.establishmentId})}">Удалить</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

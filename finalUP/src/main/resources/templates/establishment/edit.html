@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Изменить заведение</title>
+</head>
+<body>
+
+<h1>Изменить заведение</h1>
+
+<form action="#" th:action="@{/establishments/edit/{id}(id=${establishment.establishmentId})}" th:object="${establishment}" method="post">
+  <label for="name">Название заведения:</label>
+  <input type="text" id="name" th:field="*{name}" required/>
+
+  <label for="location">Адрес:</label>
+  <input type="text" id="location" th:field="*{location}" required/>
+
+  <label for="type">Тип заведения:</label>
+  <input type="text" id="type" th:field="*{type}" required/>
+
+  <button type="submit">Сохранить изменения</button>
+</form>
+
+<a href="/establishments">Назад к списку заведений</a>
+
+</body>
+</html>
